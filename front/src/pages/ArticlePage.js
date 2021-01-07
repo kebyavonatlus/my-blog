@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArticleList from '../componets/ArticlesList';
 import CommentsList from '../componets/CommentsList';
 import UpvotesSection from '../componets/UpvotesSection';
+import AddCommentForm from '../componets/AddCommentFrom';
 import articleContent from './article-content';
 import NotFoundPage from "./NotFoundPage";
 
@@ -37,6 +38,9 @@ const ArticlePage = ({ match }) => {
             </div>
 
             <CommentsList comments={articleInfo.comments ?? []} />
+
+            <AddCommentForm articleName={name} setArticleInfo={setArticleInfo}/>
+
             <h3>Other articles:</h3>
             <ArticleList articles={otherArticle} />
         </>
