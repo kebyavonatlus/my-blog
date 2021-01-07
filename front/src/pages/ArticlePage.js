@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArticleList from '../componets/ArticlesList';
 import CommentsList from '../componets/CommentsList';
+import UpvotesSection from '../componets/UpvotesSection';
 import articleContent from './article-content';
 import NotFoundPage from "./NotFoundPage";
 
@@ -21,8 +22,6 @@ const ArticlePage = ({ match }) => {
         };
 
         fetchData();
-
-        setArticleInfo({ upvotes: Math.ceil(Math.random() * 10) })
     }, [name])
 
     if (!article) return <NotFoundPage></NotFoundPage>
@@ -31,7 +30,7 @@ const ArticlePage = ({ match }) => {
         <>
             <div>
                 <h1>{article.title}</h1>
-                <p> This post has been upvotes {articleInfo.upvotes} times </p>
+                <UpvotesSection articleName={name} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo}/>
                 {article.content.map((paragraph, key) => (
                     <p key={key}>{paragraph}</p>
                 ))}
